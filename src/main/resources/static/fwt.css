@@ -1,0 +1,360 @@
+/*
+	Sporting Goods by FWT
+	www.freewebsitetemplat.es 
+	Images by fotogrph http://fotogrph.com/
+	Released under the Creative Commons Attribution 3.0 License.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #C74C23;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body {
+	background: #317006 url(images/bg.jpg) no-repeat top left;
+	color: #3D3E3E;
+	font-size: 14pt;
+	line-height: 1.75em;
+}
+
+body,input {
+	font-family: "Days One", sans-serif;
+}
+
+br.clear {
+	clear: both;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+h1,h2,h3,h4 {
+	text-transform: lowercase;
+}
+
+h2 {
+	font-size: 1.75em;
+}
+
+h2,h3,h4 {
+	color: #000;
+	margin-bottom: 1em;
+	letter-spacing: -1px;
+}
+
+h3 {
+	font-size: 1.5em;
+}
+
+h4 {
+	font-size: 1.25em;
+}
+
+img {
+	border-radius: 10px;
+}
+
+img.left {
+	float: left;
+	margin: 8px 20px 20px 0;
+}
+
+img.top {
+	margin: 8px 0 20px 0;
+}
+
+label.login {
+	display: block;
+	margin: 0 0 6px 0;
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+ul {
+	margin-bottom: 1.5em;
+}
+
+ul h4 {
+	margin-bottom: 0.35em;
+}
+
+.form {
+	margin: 0 0 28px 0;
+}
+
+.gallery ul.gallery_sidebar li, #footerContent ul.gallery_footer li {
+	border: none  !important;
+	display: block;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 0  !important;
+}
+
+.gallery ul.gallery_sidebar, #footerContent ul.gallery_footer {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.inputBox, .inputTextArea {
+	padding: 6px;
+	width: 95%;
+}
+
+.inputButton {
+	float: right;
+	padding: 6px;
+}
+
+#banner {
+	background: #FFF;
+	height: 200px;
+	margin: 0;
+	padding: 28px;
+	position: relative;
+	width: 924px;
+	border-radius: 10px;
+}
+
+#box1 {
+	margin: 0 0 12px 0;
+	overflow: hidden;
+	width: 924px;
+}
+
+#box2 {
+	float: left;
+	overflow: hidden;
+	width: 456px;
+}
+
+#box3 {
+	margin: 0 0 0 468px;
+	overflow: hidden;
+	width: 456px;
+}
+
+#content {
+	background: #FFF;
+	color: #262626;
+	padding: 28px;
+	width: 924px;
+	
+	border-radius: 10px;
+}
+
+#content a {
+	color: #C74C23;
+}
+
+#content h2, #content h3, #content h4 {
+	color: #C74C23;
+}
+
+#copyright {
+	color: #fff;
+	margin: 0 0 40px 0;
+	padding: 48px 0 76px 0;
+	text-align: center;
+}
+
+#copyright a {
+	color: #fff;
+}
+
+#footer {
+	background: #4174AA;
+	color: #E3EAF2;
+	margin: 0 0 0 0;
+	padding: 28px;
+	position: relative;
+	width: 924px;
+}
+
+#footer a {
+	color: #E3EAF2;
+}
+
+#footer h2, #footer h3, #footer h4 {
+	color: #FFF;
+}
+
+#footer ul {
+	list-style: none;
+}
+
+#footerContent {
+	width: 924px;
+}
+
+#header {
+	height: 120px;
+	padding: 28px;
+	position: relative;
+	width: 924px;
+}
+
+#logo {
+	height: 80px;
+	left: 28px;
+	line-height: 80px;
+	position: absolute;
+	top: 0;
+}
+
+#logo a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#logo h1 {
+	font-size: 3.0em;
+	letter-spacing: -2px;
+	text-shadow: 2px 2px 2px #000;
+}
+
+#main {
+	margin: 12px 0 12px 0;
+	padding: 0;
+	position: relative;
+	width: 980px;
+}
+
+#main .sectionList {
+	list-style: none;
+	padding-left: 0;
+}
+
+#main .sectionList li {
+	clear: both;
+	padding: 16px 0 16px 0;
+}
+
+#main ul {
+	list-style: none;
+}
+
+#nav {
+	bottom: -5px;
+	height: 40px;
+	left: 0;
+	line-height: 40px;
+	margin: 0 0 0 0;
+	padding: 0 28px 0 28px;
+	position: absolute;
+	width: 924px;
+}
+
+#nav a {
+	color: #fff;
+	font-size: 1.25em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+
+#nav ul {
+	list-style: none;
+}
+
+#nav ul li {
+	display: inline;
+	padding: 0 12px 0 12px;
+}
+
+#nav ul li.first {
+	padding-left: 0;
+}
+
+#nav li.active {
+	background: #FFF;
+	border-radius: 10px 10px 0 0;
+	padding: 10px;
+}
+
+#nav li.active a {
+	color: #C74C23;
+
+}
+
+			.dropotron li.opener
+			{
+				border-right: solid 2px #FFFFFF;;
+			}
+
+			.dropotron
+			{
+				width: 180px;
+				padding: 0px;
+				background: #fff;
+				color: #C74C23;
+				list-style: none;
+			}
+
+			.dropotron a
+			{
+				color: #C74C23;
+				text-decoration: none;
+				
+			}
+
+			.dropotron li
+			{
+				padding: 10px;
+				margin: 5px 0 5px 0;
+			}
+			
+			.dropotron li:hover, .dropotron li.active
+			{
+				background: #C74C23;
+			}
+			.dropotron li:hover a, .dropotron li.active a
+			{
+				color: #FFF;
+			}
+
+#outer {
+	margin: 40px auto 0 auto;
+	position: relative;
+	width: 980px;
+}
+
+#search {
+	height: 85px;
+	line-height: 85px;
+	position: absolute;
+	right: 28px;
+	top: 0;
+}
+
+#search input.button {
+	background: #C74C23;
+	border: 0;
+	color: #FFF;
+	margin-left: .5em;
+	text-transform: lowercase;
+	padding: 6px;
+	border-radius: 10px;
+}
+
+#search input.text {
+	border: solid 1px #C5C7C8;
+	padding: 6px;
+	border-radius: 10px;
+}
+
+.blogpost h2 {
+	margin-bottom: 6px;
+}

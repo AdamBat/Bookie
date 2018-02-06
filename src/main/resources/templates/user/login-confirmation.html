@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Adam Bets</title>
+<link href="http://fonts.googleapis.com/css?family=Days+One"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="fwt.css" />
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jquery.dropotron-1.0.js"></script>
+</head>
+<body>
+	<div id="outer">
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#">Adam Bets</a>
+				</h1>
+			</div>
+			<div id="search">
+				<form action="" method="post">
+					<div>
+						<input class="text" name="search" size="32" maxlength="64" /><input
+							class="button" type="submit" value="Search" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<ul id="dropotron">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Services</a></li>
+					<li><a href="#">Products</a>
+						<ul>
+							<li><a href="#">Baseball</a></li>
+							<li><a href="#">Basketball</a></li>
+							<li><a href="#">Football</a></li>
+							<li><a href="#">Golf</a></li>
+						</ul></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Blog</a></li>
+					<li class="last"><a href="#">Contact</a></li>
+				</ul>
+				<script type="text/javascript">
+					$('#dropotron').dropotron();
+				</script>
+				<br class="clear" />
+			</div>
+		</div>
+		<div id="banner">
+			<img src="images/image01.jpg" width="924" height="200" alt="" />
+		</div>
+		<div id="main">
+			<div id="content">
+				<div id="box1">
+					<div class="blogpost primary_wide1">
+						<img class="left" src="images/image02.jpg" width="60" height="60"
+							alt="" />
+						<h2>Congratulations!!!</h2>
+						<h4>
+							Posted on 01.01.2012 by <a href="#">Someone</a>
+						</h4>
+						<p>
+					Hello ${user.firstName}
+				</div>
+				<br class="clear" />
+			</div>
+		</div>
+
+	</div>
+	<div id="copyright">
+		Sporting Goods by <a href="http://www.freewebtemplates.com">FWT</a>.
+		Photos by <a href="http://fotogrph.com">Fotogrph</a>.
+	</div>
+</body>
+</html>
