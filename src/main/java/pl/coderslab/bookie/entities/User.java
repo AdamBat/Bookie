@@ -62,11 +62,12 @@ public class User implements UserDetails {
 	private BigDecimal balance = new BigDecimal(0.0);
 	private BigDecimal bonusBalance = new BigDecimal(0.0);
 	@OneToMany
-	private List<Bet> activeBets;
+	private List<ConfirmedBet> activeBets;
 	@OneToMany
-	private List<Bet> historyBets;
+	private List<ConfirmedBet> historyBets;
 	@OneToMany
 	private List<Transaction> transactions;
+	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -188,22 +189,6 @@ public class User implements UserDetails {
 		this.bonusBalance = bonusBalance;
 	}
 
-	public List<Bet> getActiveBets() {
-		return activeBets;
-	}
-
-	public void setActiveBets(List<Bet> activeBets) {
-		this.activeBets = activeBets;
-	}
-
-	public List<Bet> getHistoryBets() {
-		return historyBets;
-	}
-
-	public void setHistoryBets(List<Bet> historyBets) {
-		this.historyBets = historyBets;
-	}
-
 	public List<Transaction> getTransactions() {
 		return transactions;
 	}
@@ -228,6 +213,22 @@ public class User implements UserDetails {
 	@Override
 	public String getUsername() {
 		return this.username;
+	}
+
+	public List<ConfirmedBet> getActiveBets() {
+		return activeBets;
+	}
+
+	public void setActiveBets(List<ConfirmedBet> activeBets) {
+		this.activeBets = activeBets;
+	}
+
+	public List<ConfirmedBet> getHistoryBets() {
+		return historyBets;
+	}
+
+	public void setHistoryBets(List<ConfirmedBet> historyBets) {
+		this.historyBets = historyBets;
 	}
 
 	@Override

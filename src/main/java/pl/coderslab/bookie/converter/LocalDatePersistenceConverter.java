@@ -1,4 +1,4 @@
-package pl.coderslab.bookie.securityConfig;
+package pl.coderslab.bookie.converter;
 
 import java.sql.Date;
 import java.time.LocalDate;

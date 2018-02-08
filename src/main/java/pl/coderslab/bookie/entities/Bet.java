@@ -18,9 +18,9 @@ public class Bet {
 	private Game game;
 	@ManyToOne
 	private BetOption betOption;
-	private double oddsHome;
-	private double oddsX;
-	private double oddsAway;
+	private double odds;
+	private boolean active=true;
+	
 	public long getId() {
 		return id;
 	}
@@ -39,24 +39,20 @@ public class Bet {
 	public void setBetOption(BetOption betOption) {
 		this.betOption = betOption;
 	}
-	public double getOddsHome() {
-		return oddsHome;
+	public double getOdds() {
+		return odds;
 	}
-	public void setOddsHome(double oddsHome) {
-		this.oddsHome = oddsHome;
+	public void setOdds(double odds) {
+		this.odds = odds;
 	}
-	public double getOddsX() {
-		return oddsX;
+	public boolean isActive() {
+		return active;
 	}
-	public void setOddsX(double oddsX) {
-		this.oddsX = oddsX;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
-	public double getOddsAway() {
-		return oddsAway;
-	}
-	public void setOddsAway(double oddsAway) {
-		this.oddsAway = oddsAway;
-	}
+	
+	
 	
 	
 	

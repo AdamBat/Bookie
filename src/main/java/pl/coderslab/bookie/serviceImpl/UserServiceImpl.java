@@ -1,4 +1,4 @@
-package pl.coderslab.bookie.service;
+package pl.coderslab.bookie.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +10,7 @@ import pl.coderslab.bookie.entities.Role;
 import pl.coderslab.bookie.entities.User;
 import pl.coderslab.bookie.repositories.RoleRepository;
 import pl.coderslab.bookie.repositories.UserRepository;
+import pl.coderslab.bookie.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
