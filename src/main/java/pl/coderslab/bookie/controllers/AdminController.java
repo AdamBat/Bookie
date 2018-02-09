@@ -16,18 +16,7 @@ import pl.coderslab.bookie.service.SportService;
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
-	@Autowired
-	SportService sportService;
-
-	@ModelAttribute("sports")
-	public List<Sport> sportsList() {
-		return sportService.getAll();
-	}
-
-	@RequestMapping("/home")
-	public String adminHome() {
-		return "admin/home";
-	}
+	
 
 	@RequestMapping("/addSport")
 	public String addSport(Model model) {

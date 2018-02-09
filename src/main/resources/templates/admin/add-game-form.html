@@ -36,12 +36,12 @@
 					<li><a th:href="@{/}">Home</a></li>
 					<li><a th:href="@{/register}">Sign Up</a></li>
 					<li><a th:href="@{/login}">Sign In</a></li>
-					<li><a href="@{/register}">Products</a>
+					<li><a href="@{/register}">Bets</a>
 						<ul>
-							<li><a href="#">Baseball</a></li>
-							<li><a href="#">Basketball</a></li>
-							<li><a href="#">Football</a></li>
-							<li><a href="#">Golf</a></li>
+							<li><a href="/bets/football">Football</a></li>
+							<li><a href="/bets/Basketball">Basketball</a></li>
+							<li><a href="/bets/Tennis">Tennis</a></li>
+							<li><a href="/bets/Boxing">Boxing</a></li>
 						</ul></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Blog</a></li>
@@ -66,20 +66,10 @@
 						<h4>
 							Posted on 01.01.2012 by <a href="#">Someone</a>
 						</h4>
-						<p>
-							<strong>Sporting Goods</strong> is a Free XHTML/CSS template by <a
-								href="http://www.freewebtemplates.com">FWT</a>. We release all
-							of our free templates under the <a
-								href="http://creativecommons.org/licenses/by/3.0/">Creative
-								Commons Attribution 3.0 License</a> , which means you can use it
-							however you like as long as you give credit via a small text link
-							somewhere on the site. If you would like to remove this link you
-							can do so by sending a <a
-								href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X6H247U4WTMRQ">paypal
-								donation</a> of your choosing. All images used in this template are
-							sourced from <a href="http://fotogrph.com/">Fotogrph</a>, thier
-							links must remain intact if you wish to use their images.
-						</p>
+					<form th:object="game" th:action="@{/admin/addUser}" th:method="post">
+					
+					
+					</form>
 
 					</div>
 				</div>

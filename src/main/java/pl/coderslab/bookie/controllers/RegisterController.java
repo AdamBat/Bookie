@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.bookie.entities.Country;
 import pl.coderslab.bookie.entities.User;
 import pl.coderslab.bookie.repositories.CountryRepository;
+import pl.coderslab.bookie.service.CountryService;
 import pl.coderslab.bookie.service.UserService;
 
 @Controller
 public class RegisterController {
 	@Autowired
-	CountryRepository countryRepo;
+	CountryService countryService;
 	@Autowired
 	UserService userService;
 
 	@ModelAttribute("countries")
 	public List<Country> getAll() {
-		return countryRepo.findAll();
+		return countryService.getAll();
 	}
 
 	@RequestMapping("/register")

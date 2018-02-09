@@ -19,4 +19,9 @@ public class SportServiceImpl implements SportService {
 		return sportRepo.findAll();
 	}
 
+	@Override
+	public void addSport(Sport sport) {
+		sportRepo.save(sport);
+	}
+
 }

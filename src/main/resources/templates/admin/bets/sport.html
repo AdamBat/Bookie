@@ -9,10 +9,10 @@
 <title>Adam Bets</title>
 <link href="http://fonts.googleapis.com/css?family=Days+One"
 	rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="fwt.css" />
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="jquery.dropotron-1.0.js"></script>
-<script type="text/javascript" src="custom.js"></script>
+<link rel="stylesheet" type="text/css" href="/fwt.css" />
+<script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
+<script type="text/javascript" src="/custom.js"></script>
 </head>
 <body>
 	<div id="outer">
@@ -32,38 +32,27 @@
 			</div>
 			<div id="nav">
 				<ul id="dropotron">
-					<ul id="dropotron">
+					<li class="active"><a href="#">Home</a></li>
 					<li><a th:href="@{/}">Home</a></li>
 					<li><a th:href="@{/register}">Sign Up</a></li>
 					<li><a th:href="@{/login}">Sign In</a></li>
-					<li><a th:href="@{/bets/all}">Bets</a>
+					<li><a href="@{/register}">Products</a>
 						<ul>
-							<li><a th:href="@{/bets/football}">Football</a>
-								<ul>
-									<li><a th:href="@{/bets/football}/premier">Premier
-											League</a></li>
-									<li><a th:href="@{/bets/football}/bundes">Bundesliga</a></li>
-									<li><a th:href="@{/bets/football}/seriea">Serie A</a></li>
-									<li><a th:href="@{/bets/football/laliga}">Primera
-											Division</a></li>
-									<li><a th:href="@{/bets/football/ligue1}">Ligue 1 </a></li>
-								</ul></li>
-							<li><a th:href="@{/bets/basketball}">Basketball</a>
-								<ul>
-									<li><a th:href="@{/bets/basketball/nba}">NBA</a></li>
-									<li><a th:href="@{/bets/basketball/euro}">Euroleague</a></li>
-								</ul></li>
-							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
-							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
+							<li><a href="#">Baseball</a>
+							<ul>
+							<li><a href="#">Baseball</a></li>
+							<li><a href="#">Basketball</a></li>
+							<li><a href="#">Football</a></li>
+							<li><a href="#">Golf</a></li>
+							</ul>
+							</li>
+							<li><a href="#">Basketball</a></li>
+							<li><a href="#">Football</a></li>
+							<li><a href="#">Golf</a></li>
 						</ul></li>
-					<li><a href="#">Account</a>
-						<ul>
-							<li><a th:href="@{/account/profile}">My profile</a></li>
-							<li><a th:href="@{/account/banking}">Banking</a></li>
-						</ul></li>
-					<li><a th:href="@{/livescore}">LiveScore</a></li>
-					<li><a th:href="@{/picks}">Picks</a></li>
-					<li><a th:href="@{/contact}">Contact</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Blog</a></li>
+					<li class="last"><a href="#">Contact</a></li>
 				</ul>
 				<script type="text/javascript">
 					$('#dropotron').dropotron();
@@ -78,24 +67,25 @@
 			<div id="content">
 				<div id="box1">
 					<div class="blogpost primary_wide1">
-						<table>
-							<tr>
-							<th>League</th>
-								<th>Home</th>
-								<th>Away</th>
-								<th>Score</th>
-								<th>Time</th>
-								
-							</tr>
-							<tr th:each="game : ${games}">
-							<td th:text="${game.leagueName}"></td>
-								<td th:text="${game.homeName}"></td>
-								<td th:text="${game.awayName}"></td>
-								<td th:text="${game.score}"></td>
-								<td th:text="${game.time}"></td>
-							</tr>
-						</table>
+						<img class="left" src="images/image02.jpg" width="60" height="60"
+							alt="" />
+						<h2>Welcome to Sporting Goods</h2>
+						<h4>
+							Posted on 01.01.2012 by <a href="#">Someone</a>
+						</h4>
+					
+						<form th:action="@{/bets/sport}">
+							<select th:field="*{sport}">
+								<option th:each="sport:${sports}" th:value="${sport.id}"
+									th:text="${sport.name}"></option>
+							</select>
+							 <input type="submit">
 
+						</form>
+						<form th:action="@{/bets/addSport}" method="post" th:object="${sport}">
+							<input type="text" th:field="*{name}"> <input
+								type="submit">
+						</form>
 					</div>
 				</div>
 				<div id="box2">

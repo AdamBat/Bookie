@@ -22,22 +22,40 @@
 					<a href="#">Adam Bets</a>
 				</h1>
 			</div>
-			<div id="search">
-			</div>
+			<div id="search"></div>
 			<div id="nav">
 				<ul id="dropotron">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Products</a>
+					<li><a th:href="@{/}">Home</a></li>
+					<li><a th:href="@{/register}">Sign Up</a></li>
+					<li><a th:href="@{/login}">Sign In</a></li>
+					<li><a th:href="@{/bets/all}">Bets</a>
 						<ul>
-							<li><a href="#">Baseball</a></li>
-							<li><a href="#">Basketball</a></li>
-							<li><a href="#">Football</a></li>
-							<li><a href="#">Golf</a></li>
+							<li><a th:href="@{/bets/football}">Football</a>
+								<ul>
+									<li><a th:href="@{/bets/football/premier}">Premier
+											League</a></li>
+									<li><a th:href="@{/bets/football/bundes}">Bundesliga</a></li>
+									<li><a th:href="@{/bets/football/seriea}">Serie A</a></li>
+									<li><a th:href="@{/bets/football/laliga}">Primera
+											Division</a></li>
+									<li><a th:href="@{/bets/football/ligue1}">Ligue 1 </a></li>
+								</ul></li>
+							<li><a th:href="@{/bets/basketball}">Basketball</a>
+								<ul>
+									<li><a th:href="@{/bets/basketball/nba}">Nba</a></li>
+									<li><a th:href="@{/bets/basketball/euro}">Euroleague</a></li>
+								</ul></li>
+							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
+							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
 						</ul></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Blog</a></li>
-					<li class="last"><a href="#">Contact</a></li>
+					<li><a href="#">Account</a>
+						<ul>
+							<li><a th:href="@{/account/profile}">My profile</a></li>
+							<li><a th:href="@{/account/banking}">Banking</a></li>
+						</ul></li>
+					<li><a th:href="@{/livescore}">LiveScore</a></li>
+					<li><a th:href="@{/picks}">Picks</a></li>
+					<li><a th:href="@{/contact}">Contact</a></li>
 				</ul>
 				<script type="text/javascript">
 					$('#dropotron').dropotron();
@@ -55,30 +73,31 @@
 						<img class="left" src="images/image02.jpg" width="60" height="60"
 							alt="" />
 						<h2>Register Form</h2>
-					
+
 
 					</div>
 				</div>
-				<div id="box2">								
+				<div id="box2">
 					<form th:object="${user}" th:action="@{/register}" th:method="post">
-		Username <input type="text" th:field="*{username}"/><br/>
-		Password<input id="password" type="password" th:field="*{password}"/><br>
-		Confirm Password<input id="confirmPassword" type="password" th:field="*{confirmPassword}"/><br>
-		Email <input type="text" th:field="*{email}"/><br/> 
-		Street <input type="text" th:field="*{street}"/><br/> 
-		House nr <input type="text" th:field="*{houseNr}"/><br/>
-		Postcode <input type="text" th:field="*{postcode}"/><br/>
-		Mobile Phone Number <input type="text" th:field="*{mobilePhone}"/><br/>
-		Country <select th:field="*{country}">
-  <option th:each="country : ${countries}" 
-          th:value="${country.id}" 
-          th:text="${country.name}"></option>
-</select><br>
-		Date of birth <input type="date" th:field="*{dateOfBirth}"/><br/>
-		<input type="submit" value="Register"/>
-			</form>		
+						Username <input type="text" th:field="*{username}" /><br />
+						Password<input id="password" type="password"
+							th:field="*{password}" /><br> Confirm Password<input
+							id="confirmPassword" type="password"
+							th:field="*{confirmPassword}" /><br> Email <input
+							type="text" th:field="*{email}" /><br /> Street <input
+							type="text" th:field="*{street}" /><br /> House nr <input
+							type="text" th:field="*{houseNr}" /><br /> Postcode <input
+							type="text" th:field="*{postcode}" /><br /> Mobile Phone Number <input
+							type="text" th:field="*{mobilePhone}" /><br /> Country <select
+							th:field="*{country}">
+							<option th:each="country : ${countries}" th:value="${country.id}"
+								th:text="${country.name}"></option>
+						</select><br> Date of birth <input type="date"
+							th:field="*{dateOfBirth}" /><br /> <input type="submit"
+							value="Register" />
+					</form>
 				</div>
-				
+
 				<br class="clear" />
 			</div>
 		</div>
