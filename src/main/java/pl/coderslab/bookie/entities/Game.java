@@ -29,6 +29,8 @@ public class Game {
 	@OneToMany
 	private List <BetOption> betOptions;
 	private boolean active;
+	private int homeScore;
+	private int awayScore;
 	
 	public LocalDateTime getDateTime() {
 		return dateTime;
@@ -78,6 +80,20 @@ public class Game {
 	public void setBetOptions(List<BetOption> betOptions) {
 		this.betOptions = betOptions;
 	}
+	public int getHomeScore() {
+		return homeScore;
+	}
+	public void setHomeScore(int homeScore) {
+		this.homeScore = homeScore;
+	}
+	public int getAwayScore() {
+		return awayScore;
+	}
+	public void setAwayScore(int awayScore) {
+		this.awayScore = awayScore;
+	}
+	
+	
 	
 	
 }

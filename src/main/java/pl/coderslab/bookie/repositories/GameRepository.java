@@ -12,5 +12,10 @@ import pl.coderslab.bookie.entities.Sport;
 public interface GameRepository extends JpaRepository<Game, Long> {
 	@Query("select g from Game g where active=true")
 	List<Game> findAllActive();
-	List<Game> findAllByEventId(long id);
+//	@Query("SELECT * FROM ")
+	List<Game> findAllByEventIdAndActive(long id,boolean active);
 }
+/*select b.fname, b.lname from Users b JOIN b.groups c where c.groupName = :groupName 
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;*/

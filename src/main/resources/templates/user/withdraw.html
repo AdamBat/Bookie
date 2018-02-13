@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="fwt.css" />
 <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="jquery.dropotron-1.0.js"></script>
+<script type="text/javascript" src="custom.js"></script>
 </head>
 <body>
 	<div id="outer">
@@ -31,42 +32,40 @@
 			</div>
 			<div id="nav">
 						<ul id="dropotron">
-					<li><a th:href="@{/}">Home</a></li>
-					<li><a th:href="@{/register}">Sign Up</a></li>
-					<li><a th:href="@{/login}">Sign In</a></li>
-					<li><a th:href="@{/bets/all}">Bets</a>
-						<ul>
-							<li><a th:href="@{/bets/football}">Football</a>
+							<li><a th:href="@{/}">Home</a></li>
+							<li><a th:href="@{/register}">Sign Up</a></li>
+							<li><a th:href="@{/login}">Sign In</a></li>
+							<li><a th:href="@{/bets/all}">Bets</a>
 								<ul>
-									<li><a th:href="@{/bets/football/premier}">Premier
-											League</a></li>
-									<li><a th:href="@{/bets/football/bundes}">Bundesliga</a></li>
-									<li><a th:href="@{/bets/football/seriea}">Serie A</a></li>
-									<li><a th:href="@{/bets/football/laliga}">Primera
-											Division</a></li>
-									<li><a th:href="@{/bets/football/ligue1}">Ligue 1 </a></li>
+									<li><a th:href="@{/bets/football}">Football</a>
+										<ul>
+											<li><a th:href="@{/bets/football/premier}">Premier
+													League</a></li>
+											<li><a th:href="@{/bets/football/bundes}">Bundesliga</a></li>
+											<li><a th:href="@{/bets/football/seriea}">Serie A</a></li>
+											<li><a th:href="@{/bets/football/laliga}">Primera
+													Division</a></li>
+											<li><a th:href="@{/bets/football/ligue1}">Ligue 1 </a></li>
+										</ul></li>
+									<li><a th:href="@{/bets/basketball}">Basketball</a>
+										<ul>
+											<li><a th:href="@{/bets/basketball/nba}">Basketball</a></li>
+											<li><a th:href="@{/bets/basketball/euro}">Basketball</a></li>
+										</ul></li>
+									<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
+									<li><a th:href="@{/bets/boxing}">Boxing</a></li>
 								</ul></li>
-							<li><a th:href="@{/bets/basketball}">Basketball</a>
+							<li><a href="#">Account</a>
 								<ul>
-									<li><a th:href="@{/bets/basketball/nba}">Basketball</a></li>
-									<li><a th:href="@{/bets/basketball/euro}">Basketball</a></li>
+									<li><a th:href="@{/account/profile}">My profile</a></li>
+									<li><a th:href="@{/account/banking}">Banking</a></li>
 								</ul></li>
-							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
-							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
-						</ul></li>
-					<li><a href="#">Account</a>
-						<ul>
-							<li><a th:href="@{/account/profile}">My profile</a></li>
-							<li><a th:href="@{/account/banking}">Banking</a></li>
-						</ul></li>
-					<li><a th:href="@{/livescore}">LiveScore</a></li>
-					<li><a th:href="@{/picks}">Picks</a></li>
-					<li><a th:href="@{/contact}">Contact</a></li>
-				</ul>
-				<script type="text/javascript">
-					$('#dropotron').dropotron();
-				</script>
-				<br class="clear" />
+							<li><a th:href="@{/livescore}">LiveScore</a></li>
+							<li><a th:href="@{/picks}">Picks</a></li>
+							<li><a th:href="@{/contact}">Contact</a></li>
+						</ul> <script type="text/javascript">
+							$('#dropotron').dropotron();
+						</script> <br class="clear" />
 			</div>
 		</div>
 		<div id="banner">
@@ -83,21 +82,19 @@
 							Posted on 01.01.2012 by <a href="#">Someone</a>
 						</h4>
 						<p>
-						<form th:action="@{/login}" method="post">
-							<div>
-								<label> User Name : <input type="text" name="username" />
-								</label>
-							</div>
-							<div>
-								<label> Password: <input type="password" name="password" />
-								</label>
-							</div>
-							<div>
-								<input type="submit" value="Sign In" />
-							</div>
-						</form>
-					
-
+							<strong>Sporting Goods</strong> is a Free XHTML/CSS template by <a
+								href="http://www.freewebtemplates.com">FWT</a>. We release all
+							of our free templates under the <a
+								href="http://creativecommons.org/licenses/by/3.0/">Creative
+								Commons Attribution 3.0 License</a> , which means you can use it
+							however you like as long as you give credit via a small text link
+							somewhere on the site. If you would like to remove this link you
+							can do so by sending a <a
+								href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X6H247U4WTMRQ">paypal
+								donation</a> of your choosing. All images used in this template are
+							sourced from <a href="http://fotogrph.com/">Fotogrph</a>, thier
+							links must remain intact if you wish to use their images.
+						</p>
 
 					</div>
 				</div>

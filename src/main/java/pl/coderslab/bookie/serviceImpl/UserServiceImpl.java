@@ -1,6 +1,9 @@
 package pl.coderslab.bookie.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -44,9 +47,18 @@ public class UserServiceImpl implements UserService {
 	public void saveAdmin(User user) {
 		user.setVerified(true);
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-		Role role = roleRepo.findByName("ROlE_ADMIN");
+		Role role = roleRepo.findByName("ROLE_ADMIN");
 		user.setRole(role);
 		userRepo.save(user);
+	}
+	@Override
+	public User getCurrentUser() {
+		return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	}
+
+	@Override
+	public List<User> getAll() {
+		return userRepo.findAll();
 	}
 
 }

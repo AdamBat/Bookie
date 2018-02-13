@@ -1,6 +1,7 @@
 package pl.coderslab.bookie.controllers;
 
-import org.springframework.security.core.Authentication;
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,14 +12,11 @@ public class LoginController {
 	public String login() {
 		return "user/login-form";
 	}
+
 	@PostMapping("/login")
-	public String loginConfirm(Authentication auth) {
-		if (auth.getAuthorities().contains("ADMIN")) {
-			return "/admin/admin-home";
-		} else if (auth.getAuthorities().contains("USER")) {
-			return "/user/home";
-		} else {
-			return "/start/home";
-		}
+	public String loginConfirm(Principal principal) {
+		System.out.println(principal.getName());
+		return "livescore";
 	}
+
 }

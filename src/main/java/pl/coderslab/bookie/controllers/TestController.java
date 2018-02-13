@@ -24,8 +24,8 @@ public class TestController {
 	@RequestMapping("/addAdmin")
 	public String addAdmin() {
 		User user = new User();
-		user.setUsername("adam");
-		user.setUsername("adam");
+		user.setUsername("admin");
+		user.setPassword("admin");;
 		user.setEmail("ds@op.pl");
 		user.setPostcode("434");
 		user.setHouseNr(230);
@@ -40,7 +40,7 @@ public class TestController {
 	@ResponseBody
 	public String check() {
 		List<Game> games = gameService.findAllActive();
-		gameService.checkAndUpdateIfActive();
+		gameService.checkifActiveAndUpdate();
 		return "zmieniono";
 	}
 	

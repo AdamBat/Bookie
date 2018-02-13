@@ -9,9 +9,10 @@
 <title>Adam Bets</title>
 <link href="http://fonts.googleapis.com/css?family=Days+One"
 	rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="fwt.css" />
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="jquery.dropotron-1.0.js"></script>
+<link rel="stylesheet" type="text/css" href="/fwt.css" />
+<script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
+<script type="text/javascript" src="custom.js"></script>
 </head>
 <body>
 	<div id="outer">
@@ -48,8 +49,8 @@
 								</ul></li>
 							<li><a th:href="@{/bets/basketball}">Basketball</a>
 								<ul>
-									<li><a th:href="@{/bets/basketball/nba}">Nba</a></li>
-									<li><a th:href="@{/bets/basketball/euro}">Euroleague</a></li>
+									<li><a th:href="@{/bets/basketball/nba}">Basketball</a></li>
+									<li><a th:href="@{/bets/basketball/euro}">Basketball</a></li>
 								</ul></li>
 							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
 							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
@@ -70,29 +71,52 @@
 			</div>
 		</div>
 		<div id="banner">
-			<img src="images/image01.jpg" width="924" height="200" alt="" />
+			<img src="/images/image01.jpg" width="924" height="200" alt="" />
 		</div>
 		<div id="main">
 			<div id="content">
 				<div id="box1">
 					<div class="blogpost primary_wide1">
-						<img class="left" src="images/image02.jpg" width="60" height="60"
+						<img class="left" src="/images/image02.jpg" width="60" height="60"
 							alt="" />
-						<h2>Congratulations!!!</h2>
+						<h2>Welcome to Sporting Goods</h2>
 						<h4>
-						LOGGED
 							Posted on 01.01.2012 by <a href="#">Someone</a>
 						</h4>
-						<p>Hello ${user.firstName}
+						<table border=1>
+								<tr th:each="game:${spa}">
+									<td th:text="${#temporals.format(game.dateTime, 'yyyy-MM-dd HH:mm')}">A Smoke Test'</td>
+									<td th:text="${game.home}">A Smoke Test'</td>
+									<td th:text="${game.away}">A Smoke Test'</td>
+									<td><a th:href="@{/bets/game(id=${game.id})}">More Bets</a></td>
+								</tr>
+						</table>
 					</div>
-					<br class="clear" />
 				</div>
+				<div id="box2">
+					<h3>Consectetur purus</h3>
+					<img class="top" src="/images/image03.jpg" width="456" height="140"
+						alt="" />
+					<p>Ultrices dolor auctor luctus. Dictum tortor tristique enim
+						adipiscing at sed auctor. Fringilla dis cras nulla vitae eu
+						facilisis suscipit.</p>
+				</div>
+				<div id="box3">
+					<h3>Urna lobortis lobortis</h3>
+					<img class="top" src="/images/image04.jpg" width="456" height="140"
+						alt="" />
+					<p>Elit id etiam mollis suscipit eu ligula. Ullamcorper varius
+						morbi sapien. Scelerisque semper turpis nulla ac vivamus lorem
+						fusce.</p>
+				</div>
+				<br class="clear" />
 			</div>
+		</div>
 
-		</div>
-		<div id="copyright">
-			Sporting Goods by <a href="http://www.freewebtemplates.com">FWT</a>.
-			Photos by <a href="http://fotogrph.com">Fotogrph</a>.
-		</div>
+	</div>
+	<div id="copyright">
+		Sporting Goods by <a href="http://www.freewebtemplates.com">FWT</a>.
+		Photos by <a href="http://fotogrph.com">Fotogrph</a>.
+	</div>
 </body>
 </html>

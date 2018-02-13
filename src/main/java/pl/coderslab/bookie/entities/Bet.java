@@ -20,6 +20,7 @@ public class Bet {
 	private BetOption betOption;
 	private double odds;
 	private boolean active=true;
+	private boolean won = false;
 	
 	public long getId() {
 		return id;
@@ -50,6 +51,12 @@ public class Bet {
 	}
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	public boolean isWon() {
+		return won;
+	}
+	public void setWon(boolean won) {
+		this.won = won;
 	}
 	
 	

@@ -1,10 +1,16 @@
 package pl.coderslab.bookie.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -16,10 +22,19 @@ public class ConfirmedBet {
 	private long id;
 	@ManyToOne
 	private User user;
-	@ManyToOne
-	private Bet bet;
+	@OneToMany
+	private List<Bet> bet;
 	private double stake;
 	private boolean settled=false;
+	private double odds;
+	
+	
+	public double getOdds() {
+		return odds;
+	}
+	public void setOdds(double odds) {
+		this.odds = odds;
+	}
 	public long getId() {
 		return id;
 	}
@@ -32,10 +47,11 @@ public class ConfirmedBet {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Bet getBet() {
+	
+	public List<Bet> getBet() {
 		return bet;
 	}
-	public void setBet(Bet bet) {
+	public void setBet(List<Bet> bet) {
 		this.bet = bet;
 	}
 	public double getStake() {

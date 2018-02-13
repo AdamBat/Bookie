@@ -84,10 +84,11 @@
 							Posted on 01.01.2012 by <a href="#">Someone</a>
 						</h4>
 						<table border=1>
-								<tr th:each="game:${games}">
+								<tr th:each="game:${ger}">
 									<td th:text="${#temporals.format(game.dateTime, 'yyyy-MM-dd HH:mm')}">A Smoke Test'</td>
 									<td th:text="${game.home}">A Smoke Test'</td>
 									<td th:text="${game.away}">A Smoke Test'</td>
+									<td><a th:href="@{/bets/game(id=${game.id})}">More Bets</a></td>
 								</tr>
 						</table>
 					</div>
