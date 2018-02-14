@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +21,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -40,6 +45,10 @@ public class User implements UserDetails {
 	private String password;
 	@Transient
 	private String confirmPassword;
+	private String firstName;
+	private String lastName;
+	
+	
 	@OneToOne
 	@JoinColumn(name="role_id")
 	private Role role;
@@ -61,13 +70,14 @@ public class User implements UserDetails {
 	private long mobilePhone;
 	private boolean verified = false;
 	private long loyaltyPoints = 0;
-	private BigDecimal balance = new BigDecimal(0.0);
-	private BigDecimal bonusBalance = new BigDecimal(0.0);
+	private BigDecimal balance= new BigDecimal(0.00);
+	private BigDecimal bonusBalance= new BigDecimal(0.00);
 	@OneToMany
 	private List<ConfirmedBet> activeBets;
 	@OneToMany
 	private List<ConfirmedBet> historyBets;
-	@OneToMany
+	
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Transaction> transactions;
 	
 
@@ -87,6 +97,22 @@ public class User implements UserDetails {
 	}
 
 	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}

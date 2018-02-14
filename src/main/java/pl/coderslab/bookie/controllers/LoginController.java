@@ -14,8 +14,7 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public String loginConfirm(Principal principal) {
-		System.out.println(principal.getName());
+	public String loginConfirm() {
 		return "livescore";
 	}
 

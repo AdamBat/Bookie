@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-	xmlns="http://www.w3.org/1999/xhtml">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
@@ -9,9 +8,10 @@
 <title>Adam Bets</title>
 <link href="http://fonts.googleapis.com/css?family=Days+One"
 	rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="fwt.css" />
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="jquery.dropotron-1.0.js"></script>
+<link rel="stylesheet" type="text/css" href="/fwt.css" />
+<script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
+
 </head>
 <body>
 	<div id="outer">
@@ -48,8 +48,8 @@
 								</ul></li>
 							<li><a th:href="@{/bets/basketball}">Basketball</a>
 								<ul>
-									<li><a th:href="@{/bets/basketball/nba}">Nba</a></li>
-									<li><a th:href="@{/bets/basketball/euro}">Euroleague</a></li>
+									<li><a th:href="@{/bets/basketball/nba}">Basketball</a></li>
+									<li><a th:href="@{/bets/basketball/euro}">Basketball</a></li>
 								</ul></li>
 							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
 							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
@@ -70,29 +70,38 @@
 			</div>
 		</div>
 		<div id="banner">
-			<img src="images/image01.jpg" width="924" height="200" alt="" />
+			<img src="/images/image01.jpg" width="924" height="200" alt="" />
 		</div>
 		<div id="main">
 			<div id="content">
 				<div id="box1">
 					<div class="blogpost primary_wide1">
-						<img class="left" src="images/image02.jpg" width="60" height="60"
+						<img class="left" src="/images/image02.jpg" width="60" height="60"
 							alt="" />
-						<h2>Congratulations!!!</h2>
-						<h4>
-						LOGGED
-							Posted on 01.01.2012 by <a href="#">Someone</a>
-						</h4>
-						<p>Hello ${user.firstName}
-					</div>
-					<br class="clear" />
+							Hello
+					<span th:text="${user.firstName}"></span><span th:text="${user.lastName}"></span><br>
+					Withdrawable balance	<span th:text="${user.balance}"></span><br>
+					Bonus Balance:<span th:text="${user.bonusBalance}"></span><br>
+					<form th:action="@{/account/deposit}" th:object="${transaction}"th:method="post">
+					<input type="number" th:field="*{amount}">
+					<input type="submit" value="Make a deposit">
+					</form>
+					<br>
+					<form th:action="@{/account/withdraw}" th:object="${transaction}" th:method="post">
+					<input type="number" th:field="*{amount}">
+					<input type="submit" value="Make a withdrawal">
+					</form>
+					
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="logout">
+						</form>
 				</div>
+				<div id="box2"></div>
+				<br class="clear" />
 			</div>
+		</div>
+</div>
+	</div>
 
-		</div>
-		<div id="copyright">
-			Sporting Goods by <a href="http://www.freewebtemplates.com">FWT</a>.
-			Photos by <a href="http://fotogrph.com">Fotogrph</a>.
-		</div>
 </body>
 </html>

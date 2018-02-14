@@ -1,5 +1,6 @@
 package pl.coderslab.bookie.controllers;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.bookie.entities.Bet;
 import pl.coderslab.bookie.entities.ConfirmedBet;
 import pl.coderslab.bookie.entities.User;
+import pl.coderslab.bookie.exceptions.NotEnoughFundsException;
 import pl.coderslab.bookie.service.BetService;
 import pl.coderslab.bookie.service.BetSlipService;
 import pl.coderslab.bookie.service.ConfirmedBetService;
@@ -30,47 +32,50 @@ public class BetslipController {
 	ConfirmedBetService confirmedBetService;
 	@Autowired
 	UserService userService;
+
 	@ModelAttribute("betslip")
-	public List<Bet> getBetslip(){
+	public List<Bet> getBetslip() {
 		return betslipService.getBetslip();
 	}
-	
+
 	@RequestMapping("/add")
-	public String addToBetslip(@RequestParam long id) {	
+	public String addToBetslip(@RequestParam long id) {
 		betslipService.addBet(betService.findOneById(id));
 		return "redirect:/bets/betslip";
 	}
+
 	@RequestMapping("")
 	public String showBetslip(Model model) {
 		double odds = 1;
-		for(Bet bet:betslipService.getBetslip()) {
+		for (Bet bet : betslipService.getBetslip()) {
 			odds *= bet.getOdds();
 		}
+		DecimalFormat format = new DecimalFormat("#.##");
+		odds = Double.valueOf(format.format(odds));
 		ConfirmedBet confirmedBet = new ConfirmedBet();
 		confirmedBet.setOdds(odds);
 		confirmedBet.setBet(getBetslip());
-		for(Bet b:getBetslip()) {
-			System.out.println("jestesmy w betslipie");
-			System.out.println(b.getOdds());
+		for (Bet b : getBetslip()) {
 		}
-		model.addAttribute("confirmedBet",confirmedBet);
+		model.addAttribute("confirmedBet", confirmedBet);
 		return "bets/betslip";
 	}
+
 	@ResponseBody
 	@RequestMapping("/confirmBet")
-	public String confirmBet(Authentication auth,@ModelAttribute ConfirmedBet confirmedBet) {
+	public String confirmBet(Authentication auth, @ModelAttribute ConfirmedBet confirmedBet) {
 		confirmedBet.setBet(getBetslip());
-		
-		double odds=1;
-		
-		for(Bet bet:betslipService.getBetslip()) {
+		double odds = 1;
+		for (Bet bet : betslipService.getBetslip()) {
 			odds *= bet.getOdds();
 		}
 		confirmedBet.setOdds(odds);
-		User user = userService.findByUsername(auth.getName());
-		confirmedBet.setUser(user);
-		confirmedBetService.confirmBet(confirmedBet);
+		try {
+			confirmedBetService.confirmBet(confirmedBet);
+		} catch (NotEnoughFundsException e) {
+			e.printStackTrace();
+		}
 		return "success";
 	}
-	
+
 }

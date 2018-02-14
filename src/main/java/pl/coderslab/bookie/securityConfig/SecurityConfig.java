@@ -32,17 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/user/**").hasRole("USER").and()
-				.formLogin().loginPage("/login").and().logout()
+				.formLogin().loginPage("/login").successForwardUrl("/home").and().logout()
 				.logoutSuccessUrl("/").permitAll().and()
 				.exceptionHandling().accessDeniedPage("/denied");
 		
 	}
-/*
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/**");
-	}
-*/
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.userDetailsService(userService).passwordEncoder(encoder());

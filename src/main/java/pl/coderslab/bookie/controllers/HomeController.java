@@ -10,21 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HomeController {		
+public class HomeController {
 	@RequestMapping("/")
 	public String home() {
 		return "index";
 	}
-@ResponseBody
-@GetMapping("/sprawdz")
-public String loginConfirm(Principal principal) {
-	if(principal.getName().contains("admin")){
-		return "admin i chuj";
-	}
-	else {
-		return "zwykly user i chuj";
-	}
-}
-	
 
+	@PostMapping("/home")
+	public String loginConfirm(Authentication auth) {
+		boolean isUser = auth.getAuthorities().stream()
+				.allMatch(authority -> authority.getAuthority().equalsIgnoreCase("ROLE_USER"));
+		boolean isAdmin = auth.getAuthorities().stream()
+				.allMatch(authority -> authority.getAuthority().equalsIgnoreCase("ROLE_ADMIN"));
+		if (isAdmin) {
+			return "admin/admin-home";
+		} else if (isUser) {
+			return "user/user-home";
+		}
+		return "login-form";
+
+	}
 }

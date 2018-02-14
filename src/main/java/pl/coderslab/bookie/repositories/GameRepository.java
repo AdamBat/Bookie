@@ -14,6 +14,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
 	List<Game> findAllActive();
 //	@Query("SELECT * FROM ")
 	List<Game> findAllByEventIdAndActive(long id,boolean active);
+	List<Game> findAllByActiveAndSettled(boolean active,boolean settled);
 }
 /*select b.fname, b.lname from Users b JOIN b.groups c where c.groupName = :groupName 
 SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate

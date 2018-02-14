@@ -61,4 +61,13 @@ public class UserServiceImpl implements UserService {
 		return userRepo.findAll();
 	}
 
+	@Override
+	public void updateUser(User user) {
+		User toUpdate = userRepo.findOne(user.getId());
+		toUpdate.setEmail(user.getEmail());
+		toUpdate.setBalance(user.getBalance());
+		toUpdate.setBonusBalance(user.getBonusBalance());
+		userRepo.save(toUpdate);
+
+}
 }

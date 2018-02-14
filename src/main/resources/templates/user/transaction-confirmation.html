@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Adam Bets</title>
+<link href="http://fonts.googleapis.com/css?family=Days+One"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/fwt.css" />
+<script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
+
+</head>
+<body>
+	<div id="outer">
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#">Adam Bets</a>
+				</h1>
+			</div>
+			<div id="search">
+				<form action="" method="post">
+					<div>
+						<input class="text" name="search" size="32" maxlength="64" /><input
+							class="button" type="submit" value="Search" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<ul id="dropotron">
+					<li><a th:href="@{/}">Home</a></li>
+					<li><a th:href="@{/register}">Sign Up</a></li>
+					<li><a th:href="@{/login}">Sign In</a></li>
+					<li><a th:href="@{/bets/all}">Bets</a>
+						<ul>
+							<li><a th:href="@{/bets/football}">Football</a>
+								<ul>
+									<li><a th:href="@{/bets/football/premier}">Premier
+											League</a></li>
+									<li><a th:href="@{/bets/football/bundes}">Bundesliga</a></li>
+									<li><a th:href="@{/bets/football/seriea}">Serie A</a></li>
+									<li><a th:href="@{/bets/football/laliga}">Primera
+											Division</a></li>
+									<li><a th:href="@{/bets/football/ligue1}">Ligue 1 </a></li>
+								</ul></li>
+							<li><a th:href="@{/bets/basketball}">Basketball</a>
+								<ul>
+									<li><a th:href="@{/bets/basketball/nba}">Basketball</a></li>
+									<li><a th:href="@{/bets/basketball/euro}">Basketball</a></li>
+								</ul></li>
+							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
+							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
+						</ul></li>
+					<li><a href="#">Account</a>
+						<ul>
+							<li><a th:href="@{/account/profile}">My profile</a></li>
+							<li><a th:href="@{/account/banking}">Banking</a></li>
+						</ul></li>
+					<li><a th:href="@{/livescore}">LiveScore</a></li>
+					<li><a th:href="@{/picks}">Picks</a></li>
+					<li><a th:href="@{/contact}">Contact</a></li>
+				</ul>
+				<script type="text/javascript">
+					$('#dropotron').dropotron();
+				</script>
+				<br class="clear" />
+			</div>
+		</div>
+		<div id="banner">
+			<img src="/images/image01.jpg" width="924" height="200" alt="" />
+		</div>
+		<div id="main">
+			<div id="content">
+				<div id="box1">
+					<div class="blogpost primary_wide1">
+						<img class="left" src="/images/image02.jpg" width="60" height="60"
+							alt="" />
+							
+					Thanks <span th:text="${user.firstName}"></span>!<br>
+					You've made a <span th:text="${transaction.name}"></span> for an amount of <span th:text="${transaction.amount}"></span><br>
+					Your updated balance is:<br>
+					Withdrawable balance	<span th:text="${user.balance}"></span><br>
+					Bonus Balance:<span th:text="${user.bonusBalance}"></span><br>
+					<form th:action="@{/account/deposit}" th:object="${transaction}"th:method="post">
+					<input type="number" th:field="*{amount}">
+					<input type="submit" value="Make a deposit">
+					</form>
+					<br>
+					<form th:action="@{/account/withdraw}" th:object="${transaction}" th:method="post">
+					<input type="number" th:field="*{amount}">
+					<input type="submit" value="Make a withdrawal">
+					</form>
+					
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="logout">
+						</form>
+				</div>
+				<div id="box2"></div>
+				<br class="clear" />
+			</div>
+		</div>
+</div>
+	</div>
+
+</body>
+</html>

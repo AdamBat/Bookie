@@ -1,5 +1,6 @@
 package pl.coderslab.bookie.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,10 @@ public class Bet {
 	private BetOption betOption;
 	private double odds;
 	private boolean active=true;
-	private boolean won = false;
+	@Column(name = "won", nullable = false, columnDefinition = "boolean default false")
+	private boolean won;
+	@Column(name = "settled", nullable = false, columnDefinition = "boolean default false")
+	private boolean settled;
 	
 	public long getId() {
 		return id;
@@ -57,6 +61,18 @@ public class Bet {
 	}
 	public void setWon(boolean won) {
 		this.won = won;
+	}
+	
+	public boolean isSettled() {
+		return settled;
+	}
+	public void setSettled(boolean settled) {
+		this.settled = settled;
+	}
+	@Override
+	public String toString() {
+		return "Bet [id=" + id + ", game=" + game + ", betOption=" + betOption + ", odds=" + odds + ", active=" + active
+				+ ", won=" + won + "]";
 	}
 	
 	

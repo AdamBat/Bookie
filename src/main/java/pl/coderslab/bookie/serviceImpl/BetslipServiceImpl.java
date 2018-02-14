@@ -26,13 +26,11 @@ public class BetslipServiceImpl implements BetSlipService {
 		boolean check = true;
 		for (Bet b : betslip) {
 			if (b.getGame().getAway().equals(bet.getGame().getAway())&& b.getGame().getHome().equals(bet.getGame().getHome())) {
-				System.out.println("SIE POWTARZ");
 				check = false;
 			}
 
 		}
 		if (check == true) {
-			System.out.println("dodajemy");
 			betslip.add(bet);
 		}
 

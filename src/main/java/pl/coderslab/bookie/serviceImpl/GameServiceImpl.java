@@ -8,36 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import pl.coderslab.bookie.entities.Bet;
 import pl.coderslab.bookie.entities.Game;
 import pl.coderslab.bookie.repositories.GameRepository;
+import pl.coderslab.bookie.service.BetService;
 import pl.coderslab.bookie.service.GameService;
 
 @Service
 public class GameServiceImpl implements GameService {
 	@Autowired
 	GameRepository gameRepo;
+	@Autowired
+	BetService betService;
 
 	@Override
 	public void addGame(Game game) {
 		gameRepo.save(game);
 	}
 
-	// iterating over all active Games every minute, if they already started we're
-	// setting as inactive (impossible to bet on)
-	@Override
-	@Scheduled(fixedRate = 60000)
-	public void checkifActiveAndUpdate() {
-		List<Game> games = findAllActive();
-		for (Game game : games) {
-			if (game.getDateTime().isBefore(LocalDateTime.now())) {
-				System.out.println(game.getHome());
-				Game toUpdate = gameRepo.findOne(game.getId());
-				toUpdate.setActive(false);
-				gameRepo.save(toUpdate);
-			}
-		}
-
-	}
 
 	@Override
 	public List<Game> findAllActive() {
@@ -119,6 +107,21 @@ public class GameServiceImpl implements GameService {
 		Game game = gameRepo.findOne(gameId);
 		game.setHomeScore(home);
 		game.setAwayScore(away);
+		game.setActive(false);
+		game.setSettled(true);
+		
+		for(Bet b:betService.findAllByGame(game)) {
+
+			betService.settleBet(b);
+		}
+		
+		gameRepo.save(game);
+	}
+
+
+	@Override
+	public List<Game> findAllInactiveandUnsettled() {
+		return gameRepo.findAllByActiveAndSettled(false, false);
 	}
 
 

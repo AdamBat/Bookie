@@ -8,7 +8,6 @@ public interface GameService {
 	void addGame(Game game);
 	Game findOneById(long id);
 	List<Game> findAllActive();
-	void checkifActiveAndUpdate();
 	List<Game> getAllFootball();
 	List<Game> getAllENG();
 	List<Game> getAllGER();
@@ -21,4 +20,5 @@ public interface GameService {
 	List<Game> getAllTennis();
 	List<Game> getAllBoxing();
 	void settleGame(long gameId, int home, int away);
+	List<Game> findAllInactiveandUnsettled();
 }

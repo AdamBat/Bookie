@@ -1,8 +1,11 @@
 package pl.coderslab.bookie.service;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 
 import pl.coderslab.bookie.entities.Bet;
+import pl.coderslab.bookie.entities.Game;
 
 public interface BetService {
 	boolean checkIfMarginIsOkTwoWay(double homeOdds,double awayOdds);
@@ -11,5 +14,6 @@ public interface BetService {
 	Bet getXBetByGameId (long id);
 	Bet getAwayBetByGameId(long id);
 	Bet findOneById(long id);
-	void settlleBet(Bet bet);
+	List<Bet> findAllByGame(Game game);
+	void settleBet(Bet bet);
 }

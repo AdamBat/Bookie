@@ -13,5 +13,6 @@ public interface UserService extends UserDetailsService {
 	void saveAdmin(User user);
 	User getCurrentUser();
 	List<User> getAll();
+	void updateUser(User user);
 	
 }

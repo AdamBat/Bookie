@@ -1,5 +1,6 @@
 package pl.coderslab.bookie.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 
@@ -24,8 +26,16 @@ public class ConfirmedBet {
 	private User user;
 	@OneToMany
 	private List<Bet> bet;
+	private LocalDateTime created;
+	public LocalDateTime getCreated() {
+		return created;
+	}
+	public void setCreated(LocalDateTime created) {
+		this.created = created;
+	}
 	private double stake;
 	private boolean settled=false;
+	private boolean won =false;
 	private double odds;
 	
 	
@@ -66,7 +76,11 @@ public class ConfirmedBet {
 	public void setSettled(boolean settled) {
 		this.settled = settled;
 	}
-	
+	@PrePersist
+	protected void onCreate() {
+		created = LocalDateTime.now();
+
+	}
 	
 }
 
