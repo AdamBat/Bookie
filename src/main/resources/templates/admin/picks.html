@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Adam Bets</title>
+<link href="http://fonts.googleapis.com/css?family=Days+One"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/fwt.css" />
+<script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
+</head>
+<body>
+	<div id="outer">
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#">Adam Bets</a>
+				</h1>
+			</div>
+			<div id="search">
+				<form action="" method="post">
+					<div>
+						<input class="text" name="search" size="32" maxlength="64" /><input
+							class="button" type="submit" value="Search" />
+					</div>
+				</form>
+			</div>
+			<div id="nav">
+				<ul id="dropotron">
+					<li><a th:href="@{/}">Home</a></li>
+					<li><a th:href="@{/register}">Sign Up</a></li>
+					<li><a th:href="@{/login}">Sign In</a></li>
+					<li><a th:href="@{/bets/all}">Bets</a>
+						<ul>
+							<li><a th:href="@{/bets/football}">Football</a>
+								<ul>
+									<li><a th:href="@{/bets/football/premier}">Premier
+											League</a></li>
+									<li><a th:href="@{/bets/football/bundes}">Bundesliga</a></li>
+									<li><a th:href="@{/bets/football/seriea}">Serie A</a></li>
+									<li><a th:href="@{/bets/football/laliga}">Primera
+											Division</a></li>
+									<li><a th:href="@{/bets/football/ligue1}">Ligue 1 </a></li>
+								</ul></li>
+							<li><a th:href="@{/bets/basketball}">Basketball</a>
+								<ul>
+									<li><a th:href="@{/bets/basketball/nba}">Nba</a></li>
+									<li><a th:href="@{/bets/basketball/euro}">Euroleague</a></li>
+								</ul></li>
+							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
+							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
+						</ul></li>
+					<li><a href="#">Account</a>
+						<ul>
+							<li><a th:href="@{/account/profile}">My profile</a></li>
+							<li><a th:href="@{/account/banking}">Banking</a></li>
+						</ul></li>
+					<li><a th:href="@{/livescore}">LiveScore</a></li>
+					<li><a th:href="@{/picks}">Picks</a></li>
+					<li><a th:href="@{/contact}">Contact</a></li>
+				</ul>				<script type="text/javascript">
+					$('#dropotron').dropotron();
+				</script>
+				<br class="clear" />
+			</div>
+		</div>
+		<div id="banner">
+			<img src="/images/image01.jpg" width="924" height="200" alt="" />
+		</div>
+		<div id="main">
+			<div id="content">
+				<div id="box1">
+					<div class="blogpost primary_wide1">
+
+						<h3>Easy bet</h3>
+
+						<form th:object="${easyBet}" th:method="post"
+							th:action="@{/bets/betslip/confirmBet}">
+							<ul><li th:each=" bet :${easy}">
+							<span th:text="${bet.game.home}"></span>
+							<span th:text="${bet.game.away}"></span>
+							<span th:text="${bet.betOption.name}"></span>
+							<span th:text="${bet.odds}"></span></li></ul>
+							Total Odds: <p th:text="${easyBet.odds}"></p>
+								Stake<input type="number" step="0.01" th:field="*{stake}">
+	
+						 <input type="submit"
+								value="Place bet">
+						</form>
+						<br>
+						<h3>Big win</h3>
+						<form th:object="${hardBet}" th:method="post"
+							th:action="@{/bets/betslip/confirmBet}">
+							<ul><li th:each=" bet :${hard}">
+							<span th:text="${bet.game.home}"></span>
+							<span th:text="${bet.game.away}"></span>
+							<span th:text="${bet.betOption.name}"></span>
+							<span th:text="${bet.odds}"></span></li>
+							
+							</ul>
+							Total Odds: <p th:text="${hardBet.odds}"></p>
+							Stake<input type="number" step="0.01" th:field="*{stake}">
+						 <input type="submit"
+								value="Place bet">
+						</form>
+
+					</div>
+				</div>
+				<div id="box2">
+
+					<img class="top" src="/images/image03.jpg" width="456" height="140"
+						alt="" />
+
+				</div>
+				<div id="box3">
+
+					<img class="top" src="/images/image04.jpg" width="456" height="140"
+						alt="" />
+
+				</div>
+				<br class="clear" />
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

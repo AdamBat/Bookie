@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void saveUser(User user) {
-		
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
 		Role role = roleRepo.findByName("ROLE_USER");
 		user.setRole(role);
@@ -67,6 +66,7 @@ public class UserServiceImpl implements UserService {
 		toUpdate.setEmail(user.getEmail());
 		toUpdate.setBalance(user.getBalance());
 		toUpdate.setBonusBalance(user.getBonusBalance());
+		toUpdate.setActiveBets(user.getActiveBets());
 		userRepo.save(toUpdate);
 
 }

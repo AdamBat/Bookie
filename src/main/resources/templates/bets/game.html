@@ -49,8 +49,8 @@
 								</ul></li>
 							<li><a th:href="@{/bets/basketball}">Basketball</a>
 								<ul>
-									<li><a th:href="@{/bets/basketball/nba}">Basketball</a></li>
-									<li><a th:href="@{/bets/basketball/euro}">Basketball</a></li>
+									<li><a th:href="@{/bets/basketball/nba}">Nba</a></li>
+									<li><a th:href="@{/bets/basketball/euro}">Euroleague</a></li>
 								</ul></li>
 							<li><a th:href="@{/bets/tennis/}">Tennis</a></li>
 							<li><a th:href="@{/bets/boxing}">Boxing</a></li>
@@ -59,6 +59,7 @@
 						<ul>
 							<li><a th:href="@{/account/profile}">My profile</a></li>
 							<li><a th:href="@{/account/banking}">Banking</a></li>
+							<li><a th:href="@{/account/history}">History</a>
 						</ul></li>
 					<li><a th:href="@{/livescore}">LiveScore</a></li>
 					<li><a th:href="@{/picks}">Picks</a></li>
@@ -79,31 +80,31 @@
 					<div class="blogpost primary_wide1">
 						<img class="left" src="/images/image02.jpg" width="60" height="60"
 							alt="" />
-						<h2>Welcome to Sporting Goods</h2>
-						<h4>
-							Posted on 01.01.2012 by <a href="#">Someone</a>
-						</h4>
+						<h2>Place your bet</h2>
 						<span th:text="${game.home}"></span> <span th:text="${game.away}"></span>
 						<a th:href="@{/bets/betslip/add(id=${home.id})}"><span th:text="${home.odds}"></span></a>
 						<a th:href="@{/bets/betslip/add(id=${draw.id})}"><span th:text="${draw.odds}"></span></a>
 						<a th:href="@{/bets/betslip/add(id=${away.id})}"><span th:text="${away.odds}"></span></a>
+						<br>
+						Over 2,5 goals
+						<a th:href="@{/bets/betslip/add(id=${over.id})}"><span th:text="${over.odds}"></span></a>
+						<br>
+						Under 2,5 goals
+						<a th:href="@{/bets/betslip/add(id=${under.id})}"><span th:text="${under.odds}"></span></a>
+						
 					</div>
 				</div>
 				<div id="box2">
-					<h3>Consectetur purus</h3>
+			
 					<img class="top" src="/images/image03.jpg" width="456" height="140"
 						alt="" />
-					<p>Ultrices dolor auctor luctus. Dictum tortor tristique enim
-						adipiscing at sed auctor. Fringilla dis cras nulla vitae eu
-						facilisis suscipit.</p>
+			
 				</div>
 				<div id="box3">
-					<h3>Urna lobortis lobortis</h3>
+			
 					<img class="top" src="/images/image04.jpg" width="456" height="140"
 						alt="" />
-					<p>Elit id etiam mollis suscipit eu ligula. Ullamcorper varius
-						morbi sapien. Scelerisque semper turpis nulla ac vivamus lorem
-						fusce.</p>
+			
 				</div>
 				<br class="clear" />
 			</div>

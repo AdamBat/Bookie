@@ -3,6 +3,8 @@ package pl.coderslab.bookie.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,27 +17,27 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 
 @Table
 @Entity
 public class ConfirmedBet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne
 	private User user;
-	@OneToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Bet> bet;
-	private LocalDateTime created;
-	public LocalDateTime getCreated() {
-		return created;
-	}
-	public void setCreated(LocalDateTime created) {
-		this.created = created;
-	}
+	private LocalDateTime created;	
 	private double stake;
+	private double winAmount;
+	@Column(name = "settled", nullable = false, columnDefinition = "boolean default false")
 	private boolean settled=false;
-	private boolean won =false;
+	@Column(name = "won", nullable = false, columnDefinition = "boolean default false")
+	private boolean isWon =false;
 	private double odds;
 	
 	
@@ -45,10 +47,16 @@ public class ConfirmedBet {
 	public void setOdds(double odds) {
 		this.odds = odds;
 	}
-	public long getId() {
+	public LocalDateTime getCreated() {
+		return created;
+	}
+	public void setCreated(LocalDateTime created) {
+		this.created = created;
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public User getUser() {
@@ -81,6 +89,19 @@ public class ConfirmedBet {
 		created = LocalDateTime.now();
 
 	}
+	public double getWinAmount() {
+		return winAmount;
+	}
+	public void setWinAmount(double winAmount) {
+		this.winAmount = winAmount;
+	}
+	public boolean isWon() {
+		return isWon;
+	}
+	public void setWon(boolean isWon) {
+		this.isWon = isWon;
+	}
+	
 	
 }
 

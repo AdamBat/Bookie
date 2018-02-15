@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Adam Bets</title>
+<link href="http://fonts.googleapis.com/css?family=Days+One"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/fwt.css" />
+<script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
+<script type="text/javascript" src="/custom.js"></script>
+</head>
+<body>
+	<div id="outer">
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#">Adam Bets</a>
+				</h1>
+			</div>
+			<div id="search">
+				<form action="" method="post">
+					<div>
+						<input class="text" name="search" size="32" maxlength="64" /><input
+							class="button" type="submit" value="Search" />
+					</div>
+				</form>
+			</div>
+	<div id="nav">
+								<ul id="dropotron">
+					<li><a th:href="@{/admin}">Home</a></li>
+					<li><a th:href="@{/login}">Sign In</a></li>
+					<li><a th:href="@{/admin/bets}">Bets</a>
+						<ul>
+							<li><a th:href="@{/admin/bets/addGame}">Add Game</a></li>
+							<li><a th:href="@{/admin/settle}">Settle</a></li>
+							<li><a th:href="@{/admin/bets/setOdds}">Set/Edit Odds</a></li>
+							<li><a th:href="@{/admin/bets}">Show All Bets</a></li>
+						</ul></li>
+						<li><a th:href="@{/admin/users}">Users</a></li>
+					<li><a th:href="@{/admin/bets}">Boss's Picks</a></li>
+				</ul>
+				<script type="text/javascript">
+					$('#dropotron').dropotron();
+				</script>
+				<br class="clear" />
+			</div>
+		</div>
+		<div id="banner">
+			<img src="/images/image01.jpg" width="924" height="200" alt="" />
+		</div>
+		<div id="main">
+			<div id="content">
+				<div id="box1">
+					<div class="blogpost primary_wide1">
+						<img class="left" src="/images/image02.jpg" width="60" height="60"
+							alt="" />
+						<h2>Hello Boss</h2>
+				<ul>
+				<li th:each="user : ${users}">
+				<span th:text="${user.username}"></span>
+				<a th:href="@{/admin/users/user(id=${user.id})}">Details</a>
+				</li>
+				</ul>
+				</div>
+				<div id="box2">
+	
+					<img class="top" src="/images/image03.jpg" width="456" height="140"
+						alt="" />
+				
+				</div>
+				<div id="box3">
+
+					<img class="top" src="/images/image04.jpg" width="456" height="140"
+						alt="" />
+				
+				</div>
+				<br class="clear" />
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

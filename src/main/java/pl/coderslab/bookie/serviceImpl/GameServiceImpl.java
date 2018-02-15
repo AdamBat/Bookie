@@ -24,6 +24,7 @@ public class GameServiceImpl implements GameService {
 	@Override
 	public void addGame(Game game) {
 		gameRepo.save(game);
+		System.out.println("dodajemy" + game.isActive());
 	}
 
 
@@ -111,7 +112,6 @@ public class GameServiceImpl implements GameService {
 		game.setSettled(true);
 		
 		for(Bet b:betService.findAllByGame(game)) {
-
 			betService.settleBet(b);
 		}
 		
@@ -125,4 +125,36 @@ public class GameServiceImpl implements GameService {
 	}
 
 
+	@Override
+	public List<Game> findAllWithoutOdds() {
+		List<Game> gamesNoOdds = new ArrayList<>();
+		for(Game game:findAllActive()) {
+			if(betService.findAllByGame(game).isEmpty()) {
+				gamesNoOdds.add(game);
+			}
+		}
+		return gamesNoOdds;
+	}
+
+
+	@Override
+	public List<Game> findAllWithOdds() {
+		List<Game> gamesWithOdds = new ArrayList<>();
+		for(Game game:findAllActive()) {
+			if(!betService.findAllByGame(game).isEmpty()) {
+				gamesWithOdds.add(game);
+			}
+		}
+		return gamesWithOdds;
+	}
+
+
+	@Override
+	public void addActiveGame(Game game) {
+		game.setActive(true);
+		gameRepo.save(game);
+	}
+	
+	
+	
 }

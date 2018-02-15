@@ -8,5 +8,6 @@ public interface BetSlipService {
 	void addBet(Bet bet);
 	void removeBet (Bet bet);
 	List<Bet> getBetslip();
+	void clearBetslip();
 	
 }

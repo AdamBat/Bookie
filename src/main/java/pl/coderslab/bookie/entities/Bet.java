@@ -14,22 +14,23 @@ import javax.persistence.Table;
 public class Bet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne
 	private Game game;
 	@ManyToOne
 	private BetOption betOption;
 	private double odds;
-	private boolean active=true;
+	@Column(name = "active", nullable = false, columnDefinition = "boolean default true")
+	private boolean active;
 	@Column(name = "won", nullable = false, columnDefinition = "boolean default false")
 	private boolean won;
 	@Column(name = "settled", nullable = false, columnDefinition = "boolean default false")
 	private boolean settled;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Game getGame() {
@@ -73,6 +74,12 @@ public class Bet {
 	public String toString() {
 		return "Bet [id=" + id + ", game=" + game + ", betOption=" + betOption + ", odds=" + odds + ", active=" + active
 				+ ", won=" + won + "]";
+	}
+	public Bet(Game game, BetOption betOption) {
+		this.game = game;
+		this.betOption = betOption;
+	}
+	public Bet() {
 	}
 	
 	

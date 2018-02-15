@@ -28,7 +28,7 @@ public class Game {
 	private Event event;
 	@OneToMany
 	private List<BetOption> betOptions;
-	@Column(name = "active", nullable = false, columnDefinition = "boolean default false")
+	@Column(name = "active", nullable = false, columnDefinition = "boolean default true")
 	private boolean active;
 	@Column(name = "home_score", nullable = false, columnDefinition = "int default 0")
 	private int homeScore;

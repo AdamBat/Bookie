@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="/fwt.css" />
 <script type="text/javascript" src="/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/jquery.dropotron-1.0.js"></script>
-<script type="text/javascript" src="custom.js"></script>
 </head>
 <body>
 	<div id="outer">
@@ -31,23 +30,20 @@
 				</form>
 			</div>
 			<div id="nav">
-				<ul id="dropotron">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a th:href="@{/}">Home</a></li>
-					<li><a th:href="@{/register}">Sign Up</a></li>
+								<ul id="dropotron">
+					<li><a th:href="@{/admin}">Home</a></li>
 					<li><a th:href="@{/login}">Sign In</a></li>
-					<li><a href="@{/register}">Bets</a>
+					<li><a th:href="@{/admin/bets}">Bets</a>
 						<ul>
-							<li><a href="/bets/football">Football</a></li>
-							<li><a href="/bets/Basketball">Basketball</a></li>
-							<li><a href="/bets/Tennis">Tennis</a></li>
-							<li><a href="/bets/Boxing">Boxing</a></li>
+							<li><a th:href="@{/admin/bets/addGame}">Add Game</a></li>
+							<li><a th:href="@{/admin/settle}">Settle</a></li>
+							<li><a th:href="@{/admin/bets/setOdds}">Set/Edit Odds</a></li>
+							<li><a th:href="@{/admin/bets}">Show All Bets</a></li>
 						</ul></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Blog</a></li>
-					<li class="last"><a href="#">Contact</a></li>
+						<li><a th:href="@{/admin/users}">Users</a></li>
+					<li><a th:href="@{/admin/bets}">Boss's Picks</a></li>
 				</ul>
-				<script type="/text/javascript">
+				<script type="text/javascript">
 					$('#dropotron').dropotron();
 				</script>
 				<br class="clear" />

@@ -24,6 +24,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -49,7 +51,7 @@ public class User implements UserDetails {
 	private String lastName;
 	
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="role_id")
 	private Role role;
 	@NotBlank
@@ -72,15 +74,16 @@ public class User implements UserDetails {
 	private long loyaltyPoints = 0;
 	private BigDecimal balance= new BigDecimal(0.00);
 	private BigDecimal bonusBalance= new BigDecimal(0.00);
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<ConfirmedBet> activeBets;	
 	@OneToMany
-	private List<ConfirmedBet> activeBets;
-	@OneToMany
-	private List<ConfirmedBet> historyBets;
-	
-	@OneToMany(fetch=FetchType.EAGER)
 	private List<Transaction> transactions;
 	
 
+	public void addBet(ConfirmedBet bet){
+		activeBets.add(bet);
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
@@ -251,13 +254,6 @@ public class User implements UserDetails {
 		this.activeBets = activeBets;
 	}
 
-	public List<ConfirmedBet> getHistoryBets() {
-		return historyBets;
-	}
-
-	public void setHistoryBets(List<ConfirmedBet> historyBets) {
-		this.historyBets = historyBets;
-	}
 
 	@Override
 	public boolean isAccountNonExpired() {

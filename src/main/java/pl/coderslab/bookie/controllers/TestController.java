@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import pl.coderslab.bookie.entities.Bet;
 import pl.coderslab.bookie.entities.Game;
 import pl.coderslab.bookie.entities.Role;
 import pl.coderslab.bookie.entities.Transaction;
 import pl.coderslab.bookie.entities.User;
 import pl.coderslab.bookie.repositories.RoleRepository;
+import pl.coderslab.bookie.service.BetService;
 import pl.coderslab.bookie.service.GameService;
 import pl.coderslab.bookie.service.TransactionService;
 import pl.coderslab.bookie.service.UserService;
@@ -28,6 +30,8 @@ public class TestController {
 	TransactionService transactionService;
 	@Autowired
 	RoleRepository repo;
+	@Autowired
+	BetService betservice;
 	
 	
 	@ResponseBody
@@ -65,6 +69,10 @@ public class TestController {
 	@RequestMapping("/checkTrans")
 	public String checkTrans () {
 		User user = userService.getCurrentUser();
+		List<Bet> bets = betservice.easyBet();
+		for(Bet b:bets) {
+			System.out.println(b.getOdds());
+		}
 		System.out.println(user.getEmail());
 		for(Transaction t:transactionService.findByUser(user) ){
 			System.out.println(t.getName());

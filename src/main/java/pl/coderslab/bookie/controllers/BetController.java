@@ -60,9 +60,6 @@ public class BetController {
 		
 	@RequestMapping("/all")
 	public String allGames() {	
-		for(Game g:gameService.findAllActive()) {
-			System.out.println(g.getHome());
-		}
 		return "bets/all";
 	}
 	@RequestMapping("/game")
@@ -71,6 +68,8 @@ public class BetController {
 		model.addAttribute("home", betService.getHomeBetByGameId(id));
 		model.addAttribute("draw", betService.getXBetByGameId(id));
 		model.addAttribute("away", betService.getAwayBetByGameId(id));
+		model.addAttribute("over", betService.overBetByGameId(id));
+		model.addAttribute("under", betService.underBetByGameId(id));
 		return "bets/game";
 	}
 

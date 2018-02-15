@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<div id="nav">
+								<ul id="dropotron">
+					<li><a th:href="@{/admin}">Home</a></li>
+					<li><a th:href="@{/login}">Sign In</a></li>
+					<li><a th:href="@{/admin/bets}">Bets</a>
+						<ul>
+							<li><a th:href="@{/admin/bets/addGame}">Add Game</a></li>
+							<li><a th:href="@{/admin/settle}">Settle</a></li>
+							<li><a th:href="@{/admin/settle}">Set/Edit Odds</a></li>
+							<li><a th:href="@{/admin/bets}">Show All Bets</a></li>
+						</ul></li>
+						<li><a th:href="@{/admin/users}">Users</a></li>
+					<li><a th:href="@{/admin/bets}">Boss's Picks</a></li>
+				</ul>
+				<script type="text/javascript">
+					$('#dropotron').dropotron();
+				</script>
+				<br class="clear" />
+			</div>
+</body>
+</html>

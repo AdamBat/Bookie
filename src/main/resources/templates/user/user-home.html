@@ -58,6 +58,7 @@
 						<ul>
 							<li><a th:href="@{/account/profile}">My profile</a></li>
 							<li><a th:href="@{/account/banking}">Banking</a></li>
+							<li><a th:href="@{/account/history}">History</a>
 						</ul></li>
 					<li><a th:href="@{/livescore}">LiveScore</a></li>
 					<li><a th:href="@{/picks}">Picks</a></li>
@@ -78,25 +79,13 @@
 					<div class="blogpost primary_wide1">
 						<img class="left" src="images/image02.jpg" width="60" height="60"
 							alt="" />
-						<h2>Congratulations!!!</h2>
-						<h4>
-						LOGGED
-							Posted on 01.01.2012 by <a href="#">Someone</a>
-						</h4>
-						<p>Hello ${user.firstName}
 						Logged user: <span sec:authentication="name"></span>
-			<!-- 		Logged user: <span sec:authentication="username"></span> -->
-			<!-- 				Logged user: <span sec:authentication="user.firstName"></span> -->
-<!-- 							Logged user: <span sec:authentication="user.username"></span>
- -->					</div>
+		
+					</div>
 					<br class="clear" />
 				</div>
 			</div>
 
-		</div>
-		<div id="copyright">
-			Sporting Goods by <a href="http://www.freewebtemplates.com">FWT</a>.
-			Photos by <a href="http://fotogrph.com">Fotogrph</a>.
 		</div>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 
 import pl.coderslab.bookie.entities.Bet;
+import pl.coderslab.bookie.entities.BetOption;
 import pl.coderslab.bookie.entities.Game;
 
 public interface BetService {
@@ -16,4 +17,16 @@ public interface BetService {
 	Bet findOneById(long id);
 	List<Bet> findAllByGame(Game game);
 	void settleBet(Bet bet);
+	List<Bet> createListOfBets(Game game);
+	void saveBet (Bet bet);
+	Bet homeBetByGame(Game game);
+	Bet drawBetByGame(Game game);
+	Bet awayBetByGame(Game game);
+	Bet overBetByGame(Game game);
+	Bet underBetByGame(Game game);
+	void setInactive(Bet bet);
+	List<Bet> easyBet();
+	List<Bet> underdogBet();
+	Bet underBetByGameId(long id);
+	Bet overBetByGameId(long id);
 }

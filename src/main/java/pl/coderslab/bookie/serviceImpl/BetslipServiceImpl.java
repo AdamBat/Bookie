@@ -52,4 +52,10 @@ public class BetslipServiceImpl implements BetSlipService {
 		return betslip;
 	}
 
+	@Override
+	public void clearBetslip() {
+		betslip = new ArrayList<Bet>();
+	}
+	
+
 }

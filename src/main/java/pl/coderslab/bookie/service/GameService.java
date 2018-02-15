@@ -6,6 +6,7 @@ import pl.coderslab.bookie.entities.Game;
 
 public interface GameService {
 	void addGame(Game game);
+	void addActiveGame(Game game);
 	Game findOneById(long id);
 	List<Game> findAllActive();
 	List<Game> getAllFootball();
@@ -21,4 +22,6 @@ public interface GameService {
 	List<Game> getAllBoxing();
 	void settleGame(long gameId, int home, int away);
 	List<Game> findAllInactiveandUnsettled();
+	List<Game> findAllWithoutOdds();
+	List<Game> findAllWithOdds();
 }
